@@ -42,7 +42,7 @@ describe('codec', () => {
   })
 
   it('演出の指定：5種は通り、知らない演出は風船に戻す', () => {
-    for (const scene of ['balloon', 'scratch', 'kusudama', 'stork', 'picturebook'] as const) {
+    for (const scene of ['balloon', 'scratch', 'kusudama', 'stork', 'picturebook', 'cheer', 'pair'] as const) {
       const c = { ...defaultConfig(), scene }
       const r = decodeConfig(encodeConfig(c))
       expect(r.ok && r.config.scene).toBe(scene)

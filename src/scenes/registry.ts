@@ -6,6 +6,8 @@ import Scratch from './scratch/Scene.svelte'
 import Kusudama from './kusudama/Scene.svelte'
 import Stork from './stork/Scene.svelte'
 import PictureBook from './picturebook/Scene.svelte'
+import Cheer from './cheer/Scene.svelte'
+import Pair from './pair/Scene.svelte'
 
 export interface SceneDef {
   id: SceneId
@@ -22,4 +24,6 @@ export const SCENES: Record<SceneId, SceneDef> = {
   kusudama: { id: 'kusudama', name: 'くす玉', blurb: 'ひもを引っぱって、くす玉を割る', usesDrum: true, component: Kusudama },
   stork: { id: 'stork', name: 'こうのとり', blurb: 'こうのとりが運んできた包みをタップして、ひらく', usesDrum: true, component: Stork },
   picturebook: { id: 'picturebook', name: '絵本', blurb: '絵本のページをめくって、最後のページで発表', usesDrum: false, component: PictureBook },
+  cheer: { id: 'cheer', name: 'おうえんペア', blurb: 'ふたりの応援キャラを交互にタップして、発表のパワーをためる', usesDrum: true, component: Cheer },
+  pair: { id: 'pair', name: 'ぼうしとティアラ', blurb: 'ぼうしの男の子とティアラの女の子を呼んで、ハートの箱をあける', usesDrum: true, component: Pair },
 }

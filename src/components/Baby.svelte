@@ -38,35 +38,48 @@
     />
     <path d="M35 128 C72 146 128 146 165 128" fill="none" stroke="var(--ink)" stroke-width="2.4" />
 
-    <!-- 耳 -->
-    <circle cx="53" cy="84" r="8" fill="#ffddc4" stroke="var(--ink)" stroke-width="2.8" />
-    <circle cx="147" cy="84" r="8" fill="#ffddc4" stroke="var(--ink)" stroke-width="2.8" />
+    <!-- 耳（内側ほんのりピンク） -->
+    <circle cx="46" cy="88" r="9" fill="#ffddc4" stroke="var(--ink)" stroke-width="2.8" />
+    <circle cx="154" cy="88" r="9" fill="#ffddc4" stroke="var(--ink)" stroke-width="2.8" />
+    <circle cx="46" cy="89" r="4" fill="#ffb7a8" opacity="0.8" />
+    <circle cx="154" cy="89" r="4" fill="#ffb7a8" opacity="0.8" />
 
-    <!-- 頭（大きめ） -->
-    <ellipse cx="100" cy="78" rx="48" ry="43" fill="#ffe3cc" stroke="var(--ink)" stroke-width="3.2" />
+    <!-- 頭（ぷっくり大きく） -->
+    <ellipse cx="100" cy="80" rx="56" ry="49" fill="#ffe6d2" stroke="var(--ink)" stroke-width="3.2" />
+    <!-- おでこのつや -->
+    <path d="M62 56 C70 44 84 40 94 41" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.7" />
 
-    <!-- 髪：ちょこんと、くるん -->
-    <path d="M93 36 C85 22 103 12 111 23 C117 31 107 37 103 31" fill="none" stroke="var(--ink)" stroke-width="3.2" />
-    <path d="M76 44 C70 35 80 29 86 36" fill="none" stroke="var(--ink)" stroke-width="2.8" />
-    <path d="M119 39 C125 31 135 37 128 45" fill="none" stroke="var(--ink)" stroke-width="2.8" />
+    <!-- 髪：ちょこんとひと房、くるん -->
+    <path d="M97 34 C88 18 108 8 117 21 C123 30 112 37 107 30 C104 26 108 22 111 24" fill="none" stroke="var(--ink)" stroke-width="3.2" />
+    <path d="M76 40 C72 32 81 27 87 33" fill="none" stroke="var(--ink)" stroke-width="2.6" />
 
-    <!-- ほっぺ -->
-    <circle cx="68" cy="93" r="13" fill="url(#baby-cheek)" />
-    <circle cx="132" cy="93" r="13" fill="url(#baby-cheek)" />
+    <!-- ほっぺ：まあるく、ふんわり -->
+    <ellipse cx="62" cy="101" rx="15" ry="11" fill="url(#baby-cheek)" />
+    <ellipse cx="138" cy="101" rx="15" ry="11" fill="url(#baby-cheek)" />
+    <!-- ほっぺの色えんぴつ線 -->
+    <g stroke="#ff8f86" stroke-width="1.6" stroke-linecap="round" opacity="0.7">
+      <path d="M55 99 l3 -3 M60 101 l3 -3 M65 103 l3 -3" />
+      <path d="M131 103 l3 -3 M136 101 l3 -3 M141 99 l3 -3" />
+    </g>
 
-    <!-- 目：にっこり閉じた目 -->
-    <path d="M73 81 Q82 70 91 81" fill="none" stroke="var(--ink)" stroke-width="3.6" />
-    <path d="M109 81 Q118 70 127 81" fill="none" stroke="var(--ink)" stroke-width="3.6" />
+    <!-- 目：まんまる、きらきら（顔の低めに置くと幼く見える） -->
+    <ellipse cx="78" cy="93" rx="8.2" ry="10" fill="var(--ink)" />
+    <ellipse cx="122" cy="93" rx="8.2" ry="10" fill="var(--ink)" />
+    <circle cx="81" cy="89" r="3.4" fill="#fff" />
+    <circle cx="125" cy="89" r="3.4" fill="#fff" />
+    <circle cx="75" cy="97" r="1.7" fill="#fff" />
+    <circle cx="119" cy="97" r="1.7" fill="#fff" />
+    <!-- 眉は、ちょん -->
+    <path d="M70 76 q6 -4 12 -1 M118 75 q6 -3 12 1" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" opacity="0.55" />
 
-    <!-- 鼻と口 -->
-    <path d="M97.5 89 Q100 92 102.5 89" fill="none" stroke="var(--ink)" stroke-width="2.4" />
-    <path d="M90 97 Q100 110 110 97 Q100 101 90 97 Z" fill="#e8767a" stroke="var(--ink)" stroke-width="2.6" />
+    <!-- 鼻（ちょん）と口（にっこり小さく） -->
+    <ellipse cx="100" cy="100" rx="2.6" ry="1.9" fill="#f2a58f" stroke="var(--ink)" stroke-width="1.4" />
+    <path d="M91 106 Q95.5 112 100 106 Q104.5 112 109 106" fill="none" stroke="var(--ink)" stroke-width="2.6" />
 
     <!-- ちいさなおててで、おくるみをぎゅっ -->
-    <circle cx="60" cy="130" r="11" fill="#ffe3cc" stroke="var(--ink)" stroke-width="2.8" />
-    <circle cx="140" cy="130" r="11" fill="#ffe3cc" stroke="var(--ink)" stroke-width="2.8" />
-    <path d="M55 126 q2 -3 5 -1 M135 126 q2 -3 5 -1" fill="none" stroke="var(--ink)" stroke-width="1.8" opacity="0.6" />
-
+    <circle cx="62" cy="136" r="10" fill="#ffe6d2" stroke="var(--ink)" stroke-width="2.8" />
+    <circle cx="138" cy="136" r="10" fill="#ffe6d2" stroke="var(--ink)" stroke-width="2.8" />
+    <path d="M58 133 q1.6 -3 4 -1.4 M134 133 q1.6 -3 4 -1.4 M62 131 q1.4 -3 4 -1.4" fill="none" stroke="var(--ink)" stroke-width="1.6" opacity="0.55" />
   </g>
 {/snippet}
 

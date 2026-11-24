@@ -4,8 +4,8 @@ export const SCHEMA_VERSION = 1
 
 export const ANSWERS = ['girl', 'boy', 'gg', 'bb', 'gb'] as const
 export type Answer = (typeof ANSWERS)[number]
-export type SceneId = 'balloon' | 'scratch' | 'kusudama' | 'stork' | 'picturebook'
-export const SCENE_IDS: readonly SceneId[] = ['balloon', 'scratch', 'kusudama', 'stork', 'picturebook']
+export type SceneId = 'balloon' | 'scratch' | 'kusudama' | 'stork' | 'picturebook' | 'cheer' | 'pair'
+export const SCENE_IDS: readonly SceneId[] = ['balloon', 'scratch', 'kusudama', 'stork', 'picturebook', 'cheer', 'pair']
 export type ThemeId = 'ehon' | 'pop' | 'wa'
 export const THEME_IDS: readonly ThemeId[] = ['ehon', 'pop', 'wa']
 export const FONT_IDS = ['maru', 'hand', 'mincho'] as const

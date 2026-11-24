@@ -98,9 +98,9 @@
     if (secs <= 0) return open()
     const tl = gsap.timeline({ onComplete: open })
     if (!api.reduced) {
-      // 包みがだんだん大きくゆれて、ふくらむ
-      tl.to(s, { shake: 9, duration: 0.05, yoyo: true, repeat: Math.max(1, Math.floor(secs / 0.05)), ease: 'none' }, 0)
-      tl.to(s, { puff: 1.22, duration: secs, ease: 'power2.in' }, 0)
+      // 包みがだんだんゆれて、ほんの少しふくらむ（爆発して見えないよう控えめに）
+      tl.to(s, { shake: 5, duration: 0.05, yoyo: true, repeat: Math.max(1, Math.floor(secs / 0.05)), ease: 'none' }, 0)
+      tl.to(s, { puff: 1.08, duration: secs, ease: 'power2.in' }, 0)
     }
     tl.to({}, { duration: secs }, 0)
   }
@@ -119,10 +119,11 @@
     const tl = gsap.timeline()
     tl.to(s, { ears: 1, duration: api.reduced ? 0.15 : 0.45, ease: 'back.out(2.2)' })
     tl.to(s, { glow: 1, duration: api.reduced ? 0.2 : 0.9, ease: 'power2.out' }, 0.05)
-    tl.to(s, { sackAlpha: 0, puff: 1.5, duration: 0.45, ease: 'power1.in' }, 0.15)
+    // 包みはふくらまず、やさしくしぼんで光にとけていく
+    tl.to(s, { sackAlpha: 0, puff: 0.9, duration: 0.7, ease: 'power1.inOut' }, 0.15)
     tl.add(() => {
-      api.burst(c.x, c.y, { amount: 46, power: 1.1 })
-      api.burst(c.x, c.y, { amount: 28, power: 0.75, colors: ['#ffffff', '#fff3b5', ...api.palette] })
+      // ぱっと散らさず、光の粒がふわっと立ちのぼる程度に
+      api.burst(c.x, c.y, { amount: 16, power: 0.45, colors: ['#ffffff', '#fff3b5'] })
     }, 0.2)
     tl.add(() => api.reveal(c), api.reduced ? 0.6 : 1.3)
   }

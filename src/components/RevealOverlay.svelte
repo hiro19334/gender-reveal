@@ -27,6 +27,8 @@
   const trueColors = $derived(masked ? [NEUTRAL] : revealColors(config))
   const fake = $derived(masked ? null : config.feint ? feintColors(config) : null)
   const twins = $derived(!masked && (config.answer === 'gg' || config.answer === 'bb' || config.answer === 'gb'))
+  /** フェイントで先に見せる色の性別（「男の子と思った？」の文言用） */
+  const fakeLabel = $derived(config.answer === 'girl' || config.answer === 'gg' ? '男の子' : '女の子')
   const title = $derived(masked ? '？？？' : revealText(config))
 
   const circle = (r: number) => `circle(${r}% at ${origin.x * 100}% ${origin.y * 100}%)`
@@ -56,7 +58,8 @@
         tl.to(washA, { clipPath: circle(150), duration: 0.6 * t, ease: 'power2.out' })
         tl.to(fakeText, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '-=0.2')
         if (!reduced) tl.to(fakeText, { rotation: 3, duration: 0.08, yoyo: true, repeat: 7 })
-        tl.to({}, { duration: 0.5 })
+        // 「と思った？」をしっかり見せてから、本当の色へ
+        tl.to({}, { duration: reduced ? 1.2 : 2.2 })
         tl.to(fakeText, { autoAlpha: 0, duration: 0.2 })
       }
 
@@ -99,7 +102,7 @@
 <div class="overlay" bind:this={root}>
   {#if fake}
     <div class="wash washA" style:background={bg(fake)}></div>
-    <div class="fake">…と思った？</div>
+    <div class="fake">{fakeLabel}と思った？</div>
   {/if}
   <div class="wash" bind:this={washB} style:background={bg(trueColors)}></div>
 

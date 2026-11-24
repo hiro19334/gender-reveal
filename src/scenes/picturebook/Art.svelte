@@ -162,20 +162,26 @@
       <!-- ゆりかご -->
       <path d="M120 10 L120 34" stroke-width="2.4" />
       <path d="M72 34 L168 34" stroke-width="2.4" />
-      <path d="M80 34 L80 52 M120 34 L120 56 M160 34 L160 52" stroke-width="1.8" />
+      <path d="M80 34 L80 52 M120 34 L120 40 M160 34 L160 52" stroke-width="1.8" />
       <circle cx="80" cy="60" r="8" fill={a(3)} stroke-width="2.2" />
-      <path d="M120 50 l5 8 l9 1 l-7 6 l2 9 l-9 -5 l-9 5 l2 -9 l-7 -6 l9 -1 Z" fill={a(2)} stroke-width="2.2" />
+      <path transform="translate(0 -9) scale(1 1)" d="M120 50 l5 8 l9 1 l-7 6 l2 9 l-9 -5 l-9 5 l2 -9 l-7 -6 l9 -1 Z" fill={a(2)} stroke-width="2.2" />
       <circle cx="160" cy="60" r="8" fill={a(1)} stroke-width="2.2" />
       <!-- 本体 -->
       <path d="M44 108 L196 108 C196 150 168 168 120 168 C72 168 44 150 44 108 Z" fill={a(0)} />
       <path d="M44 108 C60 94 180 94 196 108" fill="#fff6df" />
       <path d="M60 126 C90 138 150 138 180 126" stroke-width="2" stroke-dasharray="3 6" opacity="0.7" />
       <!-- ねんねの赤ちゃん（ふとんから顔だけ） -->
-      <circle cx="120" cy="98" r="19" fill={skin} />
-      <path d="M104 92 C108 80 132 80 136 92 C128 88 112 88 104 92 Z" fill="#8a6a55" />
-      <path d="M110 100 q4 3 8 0 M122 100 q4 3 8 0" stroke-width="2" />
-      <ellipse cx="108" cy="106" rx="4" ry="2.6" fill="#ffb3a8" opacity="0.6" stroke="none" />
-      <ellipse cx="132" cy="106" rx="4" ry="2.6" fill="#ffb3a8" opacity="0.6" stroke="none" />
+      <circle cx="98" cy="102" r="6" fill={skin} stroke-width="2.2" />
+      <circle cx="142" cy="102" r="6" fill={skin} stroke-width="2.2" />
+      <ellipse cx="120" cy="97" rx="24" ry="21.5" fill={skin} />
+      <path d="M118 77 C113 66 128 61 133 70 C136 76 128 80 125 75 C123 72 126 69 128 71" stroke-width="2.2" />
+      <ellipse cx="110" cy="101" rx="3.6" ry="4.6" fill="var(--ink, #6a5648)" stroke="none" />
+      <ellipse cx="130" cy="101" rx="3.6" ry="4.6" fill="var(--ink, #6a5648)" stroke="none" />
+      <circle cx="111.6" cy="99" r="1.5" fill="#fff" stroke="none" />
+      <circle cx="131.6" cy="99" r="1.5" fill="#fff" stroke="none" />
+      <path d="M116 108 q2 2.6 4 0 q2 2.6 4 0" stroke-width="1.8" />
+      <ellipse cx="102" cy="108" rx="6" ry="4" fill="#ffb3a8" opacity="0.7" stroke="none" />
+      <ellipse cx="138" cy="108" rx="6" ry="4" fill="#ffb3a8" opacity="0.7" stroke="none" />
       <path d="M56 116 C80 126 160 126 184 116 L186 138 C160 150 80 150 54 138 Z" fill={a(1)} />
       <path d="M70 176 L170 176" stroke-width="3" />
       <path d="M206 100 l3 -7 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 Z" fill={a(3)} stroke-width="2" />
@@ -183,11 +189,19 @@
       <!-- 表紙の飾り（おくるみにくるまれた、ちいさな いのち） -->
       <ellipse cx="120" cy="184" rx="70" ry="7" fill={a(1)} opacity="0.5" stroke="none" />
       <path d="M62 170 C56 122 80 96 120 96 C160 96 184 122 178 170 C170 184 70 184 62 170 Z" fill={a(3)} />
-      <circle cx="120" cy="98" r="28" fill={skin} />
-      <path d="M96 94 C100 72 140 72 144 94 C134 86 106 86 96 94 Z" fill="#8a6a55" />
-      <path d="M108 102 q5 4 10 0 M122 102 q5 4 10 0" stroke-width="2.2" />
-      <ellipse cx="102" cy="110" rx="5" ry="3.2" fill="#ffb3a8" opacity="0.6" stroke="none" />
-      <ellipse cx="138" cy="110" rx="5" ry="3.2" fill="#ffb3a8" opacity="0.6" stroke="none" />
+      <circle cx="87" cy="104" r="8" fill={skin} stroke-width="2.4" />
+      <circle cx="153" cy="104" r="8" fill={skin} stroke-width="2.4" />
+      <ellipse cx="120" cy="96" rx="35" ry="31" fill={skin} />
+      <path d="M118 66 C111 52 130 46 136 57 C140 65 130 70 126 63 C124 59 128 56 131 58" stroke-width="2.4" />
+      <ellipse cx="106" cy="104" rx="5" ry="6.4" fill="var(--ink, #6a5648)" stroke="none" />
+      <ellipse cx="134" cy="104" rx="5" ry="6.4" fill="var(--ink, #6a5648)" stroke="none" />
+      <circle cx="108" cy="101.5" r="2.1" fill="#fff" stroke="none" />
+      <circle cx="136" cy="101.5" r="2.1" fill="#fff" stroke="none" />
+      <circle cx="104.2" cy="107" r="1" fill="#fff" stroke="none" />
+      <circle cx="132.2" cy="107" r="1" fill="#fff" stroke="none" />
+      <path d="M114 113 q3 4 6 0 q3 4 6 0" stroke-width="2" />
+      <ellipse cx="96" cy="113" rx="8" ry="5.4" fill="#ffb3a8" opacity="0.7" stroke="none" />
+      <ellipse cx="144" cy="113" rx="8" ry="5.4" fill="#ffb3a8" opacity="0.7" stroke="none" />
       <path d="M78 150 C100 164 140 164 162 150" stroke-width="2" stroke-dasharray="3 6" />
       <path d="M44 56 l5 -11 l5 11 l11 5 l-11 5 l-5 11 l-5 -11 l-11 -5 Z" fill={a(2)} stroke-width="2.2" />
       <path d="M190 40 l4 -9 l4 9 l9 4 l-9 4 l-4 9 l-4 -9 l-9 -4 Z" fill={a(0)} stroke-width="2.2" />
