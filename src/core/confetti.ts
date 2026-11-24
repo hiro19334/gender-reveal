@@ -6,58 +6,36 @@ type Shape = confetti.Shape
 const HEART =
   'M167 72c19,-38 37,-56 75,-56 42,0 76,33 76,75 0,76 -76,151 -151,227 -76,-76 -151,-151 -151,-227 0,-42 33,-75 75,-75 38,0 57,18 76,56z'
 
-/** 桜の花びら。絵文字は端末ごとに絵と透過の扱いが違うので、自分で描いた透明背景の画像を使う */
-const sakuraCache = new Map<number, Shape>()
-function sakuraShape(scalar: number): Shape {
-  const hit = sakuraCache.get(scalar)
-  if (hit) return hit
-  const S = 64
-  const c = new OffscreenCanvas(S, S)
-  const g = c.getContext('2d')!
-  g.clearRect(0, 0, S, S)
-  g.translate(S / 2, S / 2)
-  for (let i = 0; i < 5; i++) {
-    g.save()
-    g.rotate((Math.PI * 2 * i) / 5)
-    // 先に切れ込みのある花びら
-    g.beginPath()
-    g.moveTo(0, 0)
-    g.bezierCurveTo(-13, -8, -15, -26, -4, -30)
-    g.lineTo(0, -25)
-    g.lineTo(4, -30)
-    g.bezierCurveTo(15, -26, 13, -8, 0, 0)
-    g.closePath()
-    const grad = g.createLinearGradient(0, 0, 0, -30)
-    grad.addColorStop(0, '#f27aa0')
-    grad.addColorStop(0.5, '#ffb3c8')
-    grad.addColorStop(1, '#ffe3ec')
-    g.fillStyle = grad
-    g.fill()
-    g.restore()
+/**
+ * 桜の花。画像（ビットマップ）だと iPhone の Safari で透過が崩れることがあるため、
+ * 線で描いた形（Path2D）にする。色は紙吹雪ごとに SAKURA_COLORS から選ばれる。
+ */
+function sakuraPath(): string {
+  const petal = (deg: number) => {
+    const r = (deg * Math.PI) / 180
+    const P = (x: number, y: number) => {
+      const X = 50 + x * Math.cos(r) - y * Math.sin(r)
+      const Y = 50 + x * Math.sin(r) + y * Math.cos(r)
+      return `${X.toFixed(1)} ${Y.toFixed(1)}`
+    }
+    // 先に小さな切れ込みのある花びら（中心 → 外へ）
+    return `M50 50 C${P(-13, -8)} ${P(-15, -26)} ${P(-4, -30)} L${P(0, -25)} L${P(4, -30)} C${P(15, -26)} ${P(13, -8)} 50 50Z`
   }
-  g.beginPath()
-  g.arc(0, 0, 3.2, 0, Math.PI * 2)
-  g.fillStyle = '#f2c14e'
-  g.fill()
-  // 絵文字と同じ見た目の大きさになるよう縮める（描画側が scalar 倍で広げるため 1/scalar も掛ける）
-  const m = 22 / S / scalar
-  const shape = {
-    type: 'bitmap',
-    bitmap: c.transferToImageBitmap(),
-    matrix: [m, 0, 0, m, (-S * m) / 2, (-S * m) / 2],
-  } as unknown as Shape
-  sakuraCache.set(scalar, shape)
-  return shape
+  return [0, 72, 144, 216, 288].map(petal).join('')
 }
+const SAKURA_PATH = sakuraPath()
+/** 桜は答えの色にせず、いつも桜色の濃淡にする */
+const SAKURA_COLORS = ['#ff9bb8', '#ffb3c8', '#ffc7d6', '#f77fa3', '#ffffff']
+const SAKURA_SCALE = 10 / 62
 
-export function makeShapes(shape: ConfettiShape, scalar: number): Shape[] {
+export function makeShapes(shape: ConfettiShape, _scalar: number): Shape[] {
   switch (shape) {
     case 'star':
       return ['star']
     case 'heart':
       return [confetti.shapeFromPath({ path: HEART })]
     case 'sakura':
-      return [sakuraShape(scalar)]
+      return [confetti.shapeFromPath({ path: SAKURA_PATH, matrix: [SAKURA_SCALE, 0, 0, SAKURA_SCALE, -50 * SAKURA_SCALE, -50 * SAKURA_SCALE] as unknown as DOMMatrix })]
     default:
       return ['circle', 'square']
   }
@@ -98,7 +76,7 @@ export function makeFx(canvas: HTMLCanvasElement, reduced: boolean): Fx {
         gravity: 0.9,
         ticks: 220,
         origin: { x, y },
-        colors: o.colors,
+        colors: o.shape === 'sakura' ? SAKURA_COLORS : o.colors,
         shapes: makeShapes(o.shape, scalar),
         scalar,
         disableForReducedMotion: false,
@@ -118,7 +96,7 @@ export function makeFx(canvas: HTMLCanvasElement, reduced: boolean): Fx {
           gravity: 0.55,
           ticks: 320,
           origin: { x: Math.random(), y: -0.05 },
-          colors: o.colors,
+          colors: o.shape === 'sakura' ? SAKURA_COLORS : o.colors,
           shapes: makeShapes(o.shape, scalar),
           scalar,
         })

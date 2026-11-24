@@ -175,7 +175,9 @@ export function feintColors(c: RevealConfig): string[] | null {
 }
 
 export const revealText = (c: RevealConfig) => c.text.reveal || `${ANSWER_LABELS[c.answer]}です！`
-export const greetingText = (c: RevealConfig) => c.text.greeting || `${c.text.baby}の\u200bジェンダーリビール`
+/** 「ジェンダーリビール」の前で改行できるようにする（途中で「ジェンダーリ／ビール」と割れないように） */
+const breakBeforeWord = (t: string) => t.replace(/(?<!\u200b)ジェンダーリビール/g, '\u200bジェンダーリビール')
+export const greetingText = (c: RevealConfig) => breakBeforeWord(c.text.greeting || `${c.text.baby}の\u200bジェンダーリビール`)
 
 /** 予定日までの日数。未設定・過ぎている場合は null */
 export function daysUntil(dueDate: string, now = new Date()): number | null {
