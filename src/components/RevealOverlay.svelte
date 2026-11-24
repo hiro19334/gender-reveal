@@ -26,6 +26,7 @@
 
   const trueColors = $derived(masked ? [NEUTRAL] : revealColors(config))
   const fake = $derived(masked ? null : config.feint ? feintColors(config) : null)
+  const twins = $derived(!masked && (config.answer === 'gg' || config.answer === 'bb' || config.answer === 'gb'))
   const title = $derived(masked ? '？？？' : revealText(config))
 
   const circle = (r: number) => `circle(${r}% at ${origin.x * 100}% ${origin.y * 100}%)`
@@ -104,7 +105,7 @@
 
   <div class="content">
     <div class="baby" bind:this={babyEl}>
-      <Baby color={trueColors[0]} color2={trueColors[1] ?? null} />
+      <Baby color={trueColors[0]} color2={trueColors[1] ?? null} {twins} />
     </div>
     <div class="sr" role="status">{announce}</div>
     <div class="title" class:long={title.length > 8} bind:this={titleEl} aria-hidden="true">{title}</div>
