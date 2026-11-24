@@ -96,9 +96,10 @@ describe('codec', () => {
 
   it('長すぎるデータ（展開爆弾）は展開せずに弾く', () => {
     expect(decodeConfig('a'.repeat(4001))).toEqual({ ok: false, reason: 'invalid' })
-    const bomb = LZString.compressToEncodedURIComponent('a'.repeat(5_000_000))
+    const bomb = LZString.compressToEncodedURIComponent('a'.repeat(1_000_000))
     expect(decodeConfig(bomb.repeat(Math.ceil(4001 / bomb.length)))).toEqual({ ok: false, reason: 'invalid' })
-  })
+    // 爆弾の圧縮自体が遅いので、CI の遅いマシンでも落ちないよう余裕を持たせる
+  }, 30_000)
 
   it('正規の最大構成（絵本6ページ・文言最大）は長さ制限を通る', () => {
     const c = defaultConfig()
